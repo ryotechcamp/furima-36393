@@ -43,9 +43,8 @@
 | Column      | Type       | Options                        |
 | ----------- | ---------- | ------------------------------ |
 | user        | references | null: false, foreign_key: true |
-| image       | references | null: false, foreign_key: true |
-| display_name| references | null: false, foreign_key: true |
-| price       | references | null: false, foreign_key: true |
+| display     | references | null: false, foreign_key: true |
+
 
 ### Association
 
