@@ -56,7 +56,7 @@
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| user             | references | null: false, foreign_key: true |
+| display          | references | null: false, foreign_key: true |
 | postal_code      | integer    | null: false                    |
 | prefecture_id    | integer    | null: false                    |
 | city             | string     | null: false                    |
