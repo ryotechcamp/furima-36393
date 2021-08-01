@@ -1,0 +1,2 @@
+class DisplaysController < ApplicationController
+end
