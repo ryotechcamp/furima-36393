@@ -1,0 +1,3 @@
+class Display < ApplicationRecord
+  
+end
