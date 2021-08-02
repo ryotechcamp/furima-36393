@@ -19,5 +19,9 @@ class Display < ApplicationRecord
   validates :load_id, numericality: { other_than: 1, message: "can't be blank" } 
   validates :area_id, numericality: { other_than: 1, message: "can't be blank" } 
   validates :day_id, numericality: { other_than: 1, message: "can't be blank" } 
-  validates :price, numericality: { other_than: 1, message: "can't be blank" } 
+  validates :price, presence: true
+  with_options presence: true, format: {with: /\d/, message: "Price is invalid. Input half-width characters" } do
+    validates :price
+  end
+  validates :price, :length => { :minimum => 300, :maximum => 9999999, message: "is out of setting range" }
 end
