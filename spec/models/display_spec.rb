@@ -25,27 +25,27 @@ RSpec.describe Display, type: :model do
       expect(@display.errors.full_messages).to include("Instruction can't be blank")
     end
     it 'ジャンルが「--」だと登録できない' do
-      @display.genre_id = '1'
+      @display.genre_id = 1
       @display.valid?
       expect(@display.errors.full_messages).to include("Genre can't be blank")
     end
     it '状態が「--」だと登録できない' do
-      @display.status_id = '1'
+      @display.status_id = 1
       @display.valid?
       expect(@display.errors.full_messages).to include("Status can't be blank")
     end
     it '負担が「--」だと登録できない' do
-      @display.load_id = '1'
+      @display.load_id = 1
       @display.valid?
       expect(@display.errors.full_messages).to include("Load can't be blank")
     end
     it '地域が「--」だと登録できない' do
-      @display.area_id = '1'
+      @display.area_id = 1
       @display.valid?
       expect(@display.errors.full_messages).to include("Area can't be blank")
     end
     it '日数が「--」だと登録できない' do
-      @display.day_id = '1'
+      @display.day_id = 1
       @display.valid?
       expect(@display.errors.full_messages).to include("Day can't be blank")
     end
