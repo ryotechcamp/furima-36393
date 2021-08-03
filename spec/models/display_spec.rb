@@ -9,6 +9,11 @@ RSpec.describe Display, type: :model do
     it '全てのデータがあれば保存できる' do
       expect(@display).to be_valid
     end
+    it 'ユーザー情報がない場合は登録できないこと' do
+      @display.user = nil
+      @display.valid?
+      expect(@display.errors.full_messages).to include("User must exist")
+    end
     it '画像が空だと登録できない' do
       @display.image = nil
       @display.valid?
