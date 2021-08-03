@@ -26,6 +26,12 @@ class DisplaysController < ApplicationController
   end
 
   def update
+    @display = Display.find(params[:id])
+    if @display.update(display_params)
+      redirect_to display_path
+    else
+      render :edit
+    end
   end
 
   private
