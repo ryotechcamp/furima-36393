@@ -18,7 +18,7 @@ class DisplaysController < ApplicationController
   end
 
   def show
-
+    @display = Display.find(params[:id])
   end
 
   private
