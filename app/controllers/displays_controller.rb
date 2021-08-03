@@ -1,7 +1,7 @@
 class DisplaysController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show,]
   def index
-    @displays = Display.includes(:user)
+    
   end
 
   def new
