@@ -22,6 +22,7 @@ class DisplaysController < ApplicationController
   end
 
   def edit
+    @display = Display.find(params[:id])
   end
 
   def update
