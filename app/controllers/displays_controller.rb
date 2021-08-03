@@ -1,5 +1,5 @@
 class DisplaysController < ApplicationController
-  before_action :set_display, only: [:edit, :update]
+  before_action :set_display, only: [:show, :edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @displays = Display.includes(:user).order("created_at DESC")
@@ -19,7 +19,6 @@ class DisplaysController < ApplicationController
   end
 
   def show
-    @display = Display.find(params[:id])
   end
 
   def edit
