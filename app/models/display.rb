@@ -13,7 +13,7 @@ class Display < ApplicationRecord
 
   validates :display_name, presence: true
   validates :instruction, presence: true
-  validates :display_name, presence: true
+  validates :image, presence: true
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :genre_id
     validates :status_id 
@@ -21,5 +21,8 @@ class Display < ApplicationRecord
     validates :area_id 
     validates :day_id
   end
-  validates :price, presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }, format: {with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters"}
+
+  with_options presence: true, numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9999999, message: "is out of setting range" }, format: { with: /\A[0-9]+\z/, message: "is invalid. Input half-width characters"} do
+    validates :price
+  end
 end
