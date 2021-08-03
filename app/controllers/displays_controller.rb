@@ -1,5 +1,6 @@
 class DisplaysController < ApplicationController
   before_action :set_display, only: [:show, :edit, :update]
+  before_action :move_to_index, only: [:edit, :update]
   before_action :authenticate_user!, except: [:index, :show]
   def index
     @displays = Display.includes(:user).order("created_at DESC")
@@ -22,7 +23,6 @@ class DisplaysController < ApplicationController
   end
 
   def edit
-    redirect_to root_path unless @display.user_id == current_user.id
   end
 
   def update
@@ -40,6 +40,10 @@ class DisplaysController < ApplicationController
 
   def set_display
     @display = Display.find(params[:id])
+  end
+
+  def move_to_index
+    edirect_to root_path unless @display.user_id == current_user.id
   end
 
 end
