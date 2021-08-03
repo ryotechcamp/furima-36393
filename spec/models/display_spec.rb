@@ -55,12 +55,12 @@ RSpec.describe Display, type: :model do
       expect(@display.errors.full_messages).to include("Price can't be blank")
     end
     it '価格が300円未満だと登録できない' do
-      @display.price = '299'
+      @display.price = 299
       @display.valid?
       expect(@display.errors.full_messages).to include("Price is out of setting range")
     end
     it '価格が10000000円以上だと登録できない' do
-      @display.price = '10000000'
+      @display.price = 10000000
       @display.valid?
       expect(@display.errors.full_messages).to include("Price is out of setting range")
     end
