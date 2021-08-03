@@ -69,6 +69,16 @@ RSpec.describe Display, type: :model do
       @display.valid?
       expect(@display.errors.full_messages).to include("Price is out of setting range")
     end
+    it '価格が英数字混合だと登録できない' do
+      @display.price = '2e2e2'
+      @display.valid?
+      expect(@display.errors.full_messages).to include("Price is out of setting range")
+    end
+    it '価格が半角英字だと登録できない' do
+      @display.price = 'abcde'
+      @display.valid?
+      expect(@display.errors.full_messages).to include("Price is out of setting range")
+    end
     
   end
   
