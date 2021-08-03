@@ -11,9 +11,12 @@ class Display < ApplicationRecord
   belongs_to :user
   has_one_attached :image
 
-  validates :display_name, presence: true
-  validates :instruction, presence: true
-  validates :image, presence: true
+  with_options presence: true do
+    validates :display_name
+    validates :instruction
+    validates :image
+  end
+
   with_options presence: true, numericality: { other_than: 1, message: "can't be blank" } do
     validates :genre_id
     validates :status_id 
