@@ -23,6 +23,10 @@ class DisplaysController < ApplicationController
 
   def edit
     @display = Display.find(params[:id])
+
+      unless @display.user_id == current_user.id
+        redirect_to root_path
+      end
   end
 
   def update
