@@ -1,4 +1,4 @@
-class CreateShippingAddresses < ActiveRecord::Migration[6.0]
+class CreateAddresses < ActiveRecord::Migration[6.0]
   def change
     create_table :shipping_addresses do |t|
       t.references :purchase,         null: false, foreign_key: true
