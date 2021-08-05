@@ -6,6 +6,7 @@ class PurchasesController < ApplicationController
 
   def create
     @purchase_address = PurchaseAddress.new(purchase_params)
+    binding.pry
     if @purchase_address.valid?
       @purchase_address.save
       redirect_to root_path
@@ -17,6 +18,6 @@ class PurchasesController < ApplicationController
 
     private
     def purchase_params
-      params.permit(:postal_code, :area_id, :city, :house_number, :house_name, :telephone_number).merge(user_id: current_user.id, display_id: params[:display_id])
+      params.require(:purchase_address).permit(:postal_code, :area_id, :city, :house_number, :house_name, :telephone_number).merge(user_id: current_user.id, display_id: params[:display_id])
     end
 end
