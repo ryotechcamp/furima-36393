@@ -23,7 +23,6 @@ RSpec.describe PurchaseAddress, type: :model do
       it '郵便番号が空だと保存できないこと' do
         @purchase_address.postal_code = ''
         @purchase_address.valid?
-        #binding.pry
         expect(@purchase_address.errors.full_messages).to include("Postal code can't be blank")
         
       end
