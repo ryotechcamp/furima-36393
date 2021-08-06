@@ -60,7 +60,6 @@ RSpec.describe PurchaseAddress, type: :model do
       it '電話番号が英数混合では保存できないこと' do
         @purchase_address.telephone_number = '1234567abc'
         @purchase_address.valid?
-        binding.pry
         expect(@purchase_address.errors.full_messages).to include("Telephone number is invalid.Input only number")
       end
       it '電話番号が9桁以下では保存できないこと' do
@@ -77,6 +76,17 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.token = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
+      end
+      it 'ユーザー情報が紐付いていないと保存できないこと' do
+        @purchase_address.user_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("User can't be blank")
+      end
+  
+      it '商品出品情報が紐付いていないと保存できないこと' do
+        @purchase_address.display_id = nil
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("Display can't be blank")
       end
     end
   end
