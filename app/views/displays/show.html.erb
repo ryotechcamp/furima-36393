@@ -25,8 +25,8 @@
       </span>
     </div>
 
-    <% if user_signed_in? %>
-      <% if current_user.id == @display.user_id && @display.purchase.blank? %>
+    <% if user_signed_in? && @display.purchase.blank? %>
+      <% if current_user.id == @display.user_id %>
         <%= link_to "商品の編集", edit_display_path(@display.id), method: :get, class: "item-red-btn" %>
         <p class="or-text">or</p>
         <%= link_to "削除", display_path(@display.id), method: :delete, class:"item-destroy" %>
