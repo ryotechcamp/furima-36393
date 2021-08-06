@@ -50,9 +50,9 @@
 
 - belongs_to :display
 - belongs_to :user
-- has_one :shipping_address
+- has_one :address
 
-## shipping_addresses テーブル
+## addresses テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |

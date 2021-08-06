@@ -18,6 +18,7 @@ class User < ApplicationRecord
   end
 
   has_many :displays
+  has_many :purchases
 end
   
     
