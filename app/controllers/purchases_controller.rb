@@ -1,12 +1,13 @@
 class PurchasesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_purchase, only: [:index, :create]
+  before_action :move_to_index, only: [:index, :create]
+  
   def index
-    @display = Display.find(params[:display_id])
     @purchase_address = PurchaseAddress.new
   end
 
-  def create
-    @display = Display.find(params[:display_id])
-    
+  def create    
     @purchase_address = PurchaseAddress.new(purchase_params)
     if @purchase_address.valid?
       pay_item
@@ -29,5 +30,13 @@ class PurchasesController < ApplicationController
         card: purchase_params[:token],
         currency: 'jpy' 
       )      
+    end
+
+    def set_purchase
+      @display = Display.find(params[:display_id])
+    end
+
+    def move_to_index
+      redirect_to root_path unless @display.user_id != current_user.id && @display.purchase.blank?
     end
 end
