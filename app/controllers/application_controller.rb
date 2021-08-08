@@ -6,11 +6,7 @@ class ApplicationController < ActionController::Base
   private
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
-<<<<<<< HEAD
-      username == 'kato' && password == 'techcamp'
-=======
       username == ENV["BASIC_AUTH_USER"] && password == ENV["BASIC_AUTH_PASSWORD"]
->>>>>>> 1d173eca452cc699645985d6aae3cfcbfc0cc6bc
     end
   end
   def configure_permitted_parameters
